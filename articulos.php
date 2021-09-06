@@ -24,6 +24,9 @@
       </li>
       <li>
         <a class="nav-link" href="<?php echo ROOT_URL; ?>contact">Contactos</a>
+</li>
+<li>
+        <a class="nav-link" href="">New</a>
       </li>
     </ul>
       </div>
