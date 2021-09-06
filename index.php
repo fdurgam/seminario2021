@@ -1,4 +1,5 @@
 <?php
+echo "Programación de Aplicaciones Web - Seminario Tecnico Profesional 2021 <br>";
 echo "Los Datos son: <br>";
 $modelo=$_GET['modelo'];
 $nombre=$_GET['nombre'];

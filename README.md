@@ -1,1 +1,1 @@
-# Programacin de aplicaciones Web - Seminario Tecnico Profesional 2021
+# Programación de Aplicaciones Web - Seminario Tecnico Profesional 2021
