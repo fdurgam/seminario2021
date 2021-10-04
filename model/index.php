@@ -26,7 +26,11 @@ $app->contentType('text/html; charset=utf-8');
 // Lo haremos utilizando PDO con el driver mysql.
 
 include '../includes/config.php';
-
+$host = "ec2-52-3-130-181.compute-1.amazonaws.com";
+$user = "uyvfnnuuhfsrrx";
+$password = "3500d56bc9d1e33ba8945d79060e8c6a9e2b7069b871e2db42ff6ba4ffbbbdc5";
+$dbname = "dd3pq672l8kf2o";
+$port = "5432";
 $dsn = "pgsql:host=" . $host . ";port=" . $port .";dbname=" . $dbname . ";user=" . $user . ";password=" . $password . ";";
 $db = new PDO($dsn, $user, $password);
 
