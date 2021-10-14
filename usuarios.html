@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Formulario peticiones REST</title>
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    </head>	
+    <body>
+        <script>
+            $(document).ready(function()
+            {
+                $.ajaxSetup({cache: false});
+
+                // Alta de usuarios.
+                $("#alta").click(function()
+                {
+                    
+                    $.post("index.php/usuarios/new",$("#formulario").serialize(),function(resultados)
+                    {
+                       
+                       resultados=$.parseJSON(resultados);
+                       mensajes(resultados.estado,resultados.mensaje);
+                    });
+                });
+                   
+                 // Borrado de usuarios.
+                 $("#borrado").click(function()
+                 {
+                    if ($("#id").val()!="")
+                        $.ajax(
+                            {
+                                type: 'DELETE',
+                                url: 'index.php/usuarios/'+$("#id").val(),
+                                cache: false,
+                                dataType: "json",
+                                success: function(resultados,textStatus,jqXHR)
+                                {
+                                    // No tenemos q convertir el string JSON
+                                    // por que ya lo convierte a objeto
+                                    // automaticamente al indicarlo en dataType
+                                       mensajes(resultados.estado,resultados.mensaje);                                    
+                                },
+                                error: function(jqXHR, textStatus, errorThrown)
+                                {
+                                       alert(textStatus);
+                               }
+                            }); // Fin peticion $.ajax.
+                 }); // Fin click borrado
+                 
+                 
+                 
+                 // Actualización de usuarios.
+                 $("#actualizacion").click(function()
+                 {
+                    if ($("#id").val()!="")
+                        $.ajax(
+                            {
+                                type: 'PUT',
+                                url: 'index.php/usuarios/'+$("#id").val(),
+                                cache: false,
+                                data: $("#formulario").serialize(),
+                                dataType: "json",
+                                success: function(resultados,textStatus,jqXHR)
+                                {
+                                    // No tenemos q convertir el string JSON
+                                    // por que ya lo convierte a objeto
+                                    // automaticamente al indicarlo en dataType
+                                       mensajes(resultados.estado,resultados.mensaje);                                    
+                                },
+                                error: function(jqXHR, textStatus, errorThrown)
+                                {
+                                       alert(textStatus);
+                               }
+                            }); // Fin peticion $.ajax.
+                 }); // Fin click borrado
+                 
+
+                function mensajes(estado, mensaje)
+                {
+                    if (estado)
+                        $("#mensajes").hide().html('<span class="label label-success">' +
+						mensaje + '</span>').fadeIn(500).delay(1000).fadeOut(1500);
+                    else
+                        $("#mensajes").hide().html('<span class="label label-danger">' +
+						mensaje + '</span>').fadeIn(500).delay(1000).fadeOut(1500);
+                }
+            });
+        </script>
+
+<div class="container">
+<form id="formulario" role="form" style="margin:0 auto;max-width:600px;padding:15px;">
+	<legend>Prueba de peticiones REST: POST, PUT y DELETE</legend>
+	<div class="form-group">
+	<label for="id">ID Usuario</label>
+	<input type="text" class="form-control" id="id" name="id" placeholder="Introduzca id Usuario">
+	<label for="nombre">Nombre</label>
+	<input type="text" class="form-control" id="nombre" name="nombre" placeholder="Introduzca nombre">
+	<label for="apellido">Apellidos</label>
+	<input type="text" class="form-control" id="apellido" name="apellido" placeholder="Introduzca apellidos">
+	
+    <div class="form-group">
+    <label for="dni">DNI</label>
+	<input type="number" class="form-control" id="dni" name="dni" placeholder="Introduzca el dni">
+	
+
+    <label for="usuario">Nombre Usuario</label>
+	<input type="text" class="form-control" id="usuario" name="usuario" placeholder="Introduzca nombre de usuario">
+	
+
+    <label for="contrasena">Contraseña</label>
+	<input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Introduzca Contraseña">
+	
+    
+    <label for="email">E-mail</label>
+	<input type="email" class="form-control" id="email" name="email" placeholder="Introduzca e-mail">
+	</div>
+	<button type="button" class="btn btn-primary" id="alta">Alta de Usuario (POST)</button> 
+	<button type="button" class="btn btn-primary" id="actualizacion">Actualización de Datos de Usuario (PUT)</button>
+<br/>
+	<button type="button" class="btn btn-primary" id="borrado">Borrado Usuario (DELETE)</button>
+	<div id="mensajes"></div>
+</form>
+</div>
+
+</body>
+</html>
