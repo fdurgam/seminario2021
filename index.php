@@ -75,31 +75,7 @@ $app->get('/usuarios', function() use($db) {
         });
 
 $app->post('/usuarios/new',function() use($db,$app) {
-    // Para acceder a los datos recibidos del formulario
-    $datosform=$app->request;
-    
-    // Los datos serán accesibles de esta forma:
-    // $datosform->post('apellidos')
-    
-    // Preparamos la consulta de insert.
-    
-    $consulta=$db->prepare("insert into soporte_usuarios(nombre,apellido,dni,usuario,contrasena,email) 
-					values (:nombre,:apellido,:dni,:usuario,:contrasena,:email)");
-    
-    $estado=$consulta->execute(
-            array(
-                ':nombre'=> $datosform->post('nombre'),
-                ':apellido'=> $datosform->post('apellido'),
-                ':dni'=> $datosform->post('dni'),
-                ':usuario'=> $datosform->post('usuario'),
-                ':contrasena'=> $datosform->post('contrasena'),
-                ':email'=> $datosform->post('email')
-                )
-            );
-    if ($estado)
-        echo json_encode(array('estado'=>true,'mensaje'=>'Datos insertados correctamente.'));
-    else
-        echo json_encode(array('estado'=>false,'mensaje'=>'Error al insertar datos en la tabla.'));
+            echo json_encode(array('estado'=>false,'mensaje'=>'Error al insertar datos en la tabla.'));
 });
 
 // Programamos la ruta de borrado en la API REST (DELETE)
