@@ -17,7 +17,7 @@
                 $("#alta").click(function()
                 {
                     
-                    $.post("https://seminario2021.herokuapp.com/index.php/usuarios/new",$("#formulario").serialize(),function(resultados)
+                    $.post("/usuarios/new",$("#formulario").serialize(),function(resultados)
                     {
                        
                        resultados=$.parseJSON(resultados);
