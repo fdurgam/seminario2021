@@ -96,6 +96,8 @@ $app->post('/usuarios/new',function() use($db,$app) {
                 ':email'=> $datosform->post('email')
                 )
             );
+      echo $datosform->post('nombre');
+      echo $datosform->post('email');
     if ($estado)
         echo json_encode(array('estado'=>true,'mensaje'=>'Datos insertados correctamente.'));
     else

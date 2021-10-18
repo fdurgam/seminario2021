@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Formulario peticiones REST</title>
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    </head>	
+    <body>
+        
+
+<div class="container">
+<form id="formulario" method="post" action="model/index.php/usuarios/new" role="form" style="margin:0 auto;max-width:600px;padding:15px;">
+	<legend>Prueba de peticiones REST: POST, PUT y DELETE</legend>
+	<div class="form-group">
+	<label for="id">ID Usuario</label>
+	<input type="text" class="form-control" id="id" name="id" placeholder="Introduzca id Usuario">
+	<label for="nombre">Nombre</label>
+	<input type="text" class="form-control" id="nombre" name="nombre" placeholder="Introduzca nombre">
+	<label for="apellido">Apellidos</label>
+	<input type="text" class="form-control" id="apellido" name="apellido" placeholder="Introduzca apellidos">
+	
+    <div class="form-group">
+    <label for="dni">DNI</label>
+	<input type="number" class="form-control" id="dni" name="dni" placeholder="Introduzca el dni">
+	
+
+    <label for="usuario">Nombre Usuario</label>
+	<input type="text" class="form-control" id="usuario" name="usuario" placeholder="Introduzca nombre de usuario">
+	
+
+    <label for="contrasena">Contraseña</label>
+	<input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Introduzca Contraseña">
+	
+    
+    <label for="email">E-mail</label>
+	<input type="email" class="form-control" id="email" name="email" placeholder="Introduzca e-mail">
+	</div>
+	<button type="submit" class="btn btn-primary" id="alta">Alta de Usuario (POST)</button> 
+	
+</form>
+</div>
+
+</body>
+</html>
